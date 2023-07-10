@@ -17,8 +17,8 @@ const MENU_ITEMS = [
     href: '/'
   },
   {
-    id: 'projects',
-    children: 'Projects',
+    id: 'products',
+    children: 'Products',
     icon: PencilIcon,
     href: '/projects'
   },
@@ -37,6 +37,17 @@ export const Menu = ({ open, setOpen }: MenuProps) => {
         keySelector: (item) => item.children
       })
     : MENU_ITEMS
+  React.useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault()
+        setOpen(!open)
+      }
+    }
+
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
+  }, [])
   return (
     <CommandPalette
       onChangeOpen={setOpen}

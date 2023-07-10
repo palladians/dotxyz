@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { box, flex } from '../../styled-system/patterns'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
