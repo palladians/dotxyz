@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form'
 import { useState } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import Head from 'next/head'
 
 const schema = z.object({
   name: z.string().min(2).max(64),
@@ -42,7 +43,10 @@ const ContactPage = () => {
   }
   return (
     <Layout>
-      <div className={container({ marginTop: '8rem' })}>
+      <Head>
+        <title>Contact - Palladians</title>
+      </Head>
+      <div className={container({ paddingY: '8rem' })}>
         <div className={center()}>
           {messageSent ? (
             <div className={box()}>Message sent successfully</div>

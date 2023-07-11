@@ -4,12 +4,16 @@ import {
   center,
   container,
   grid,
-  square,
   stack
 } from '../../../styled-system/patterns'
 import NextImage from 'next/image'
 import { Button } from '@/components/Button'
-import { Card } from '@/components/Card'
+import * as fonts from '../fonts'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Products - Palladians'
+}
 
 const ProductsPage = () => {
   return (
@@ -29,9 +33,13 @@ const ProductsPage = () => {
         >
           <div className={stack({ gap: 4 })}>
             <h2
-              className={box({ fontSize: '1.75rem', fontWeight: 'semibold' })}
+              className={box({
+                ...fonts.heading.style,
+                fontSize: '1.75rem',
+                fontWeight: 'semibold'
+              })}
             >
-              User-centered Mina Protocol wallet.
+              User-centered Mina Protocol wallet
             </h2>
             <p
               className={box({
@@ -48,7 +56,7 @@ const ProductsPage = () => {
             </p>
             <div>
               <a
-                className={Button()}
+                className={Button({ scheme: 'outline' })}
                 href="https://pallad.xyz"
                 target="_blank"
                 rel="noreferrer noopener"
@@ -66,6 +74,65 @@ const ProductsPage = () => {
               className={box({ borderRadius: 32 })}
             />
           </a>
+        </div>
+      </div>
+      <div className={box({ backgroundColor: 'blue.50', paddingY: '4rem' })}>
+        <div className={container()}>
+          <div
+            className={grid({
+              gridTemplateColumns: '1fr',
+              gap: 40,
+              justifyContent: 'center',
+              alignItems: 'center',
+              paddingY: '4rem',
+              md: {
+                gridTemplateColumns: '1fr 1fr'
+              }
+            })}
+          >
+            <div className={stack({ gap: 4 })}>
+              <h2
+                className={box({
+                  ...fonts.heading.style,
+                  fontSize: '1.75rem',
+                  fontWeight: 'semibold'
+                })}
+              >
+                Hassle-free Web3 Authentication
+              </h2>
+              <p
+                className={box({
+                  lineHeight: '200%',
+                  textAlign: 'justify',
+                  color: 'gray.700',
+                  marginBottom: '2rem'
+                })}
+              >
+                Sign In With X framework allowing app developers integrate with
+                Cardano, Mina, Ethereum, and Solana wallets. Shipped with
+                predefined UI components, open-surced, quick, and secure.
+              </p>
+              <div>
+                <a
+                  className={Button({ scheme: 'outline' })}
+                  href="https://passcard.dev"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Visit Passcard
+                </a>
+              </div>
+            </div>
+            <a className={center()} href="https://passcard.dev" target="_blank">
+              <NextImage
+                src="/passcard-ill.jpg"
+                alt="Pallad Illustration"
+                width={400}
+                height={400}
+                className={box({ borderRadius: 32 })}
+              />
+            </a>
+          </div>
         </div>
       </div>
     </Layout>
