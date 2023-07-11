@@ -3,35 +3,36 @@ import React, { useState } from 'react'
 import CommandPalette from 'react-cmdk'
 import { HomeIcon, PencilIcon, PhoneIcon } from 'lucide-react'
 import { search } from 'fast-fuzzy'
+import { useRouter } from 'next/navigation'
 
 interface MenuProps {
   open: boolean
   setOpen: (open: boolean) => void
 }
 
-const MENU_ITEMS = [
-  {
-    id: 'home',
-    children: 'Home',
-    icon: HomeIcon,
-    href: '/'
-  },
-  {
-    id: 'products',
-    children: 'Products',
-    icon: PencilIcon,
-    href: '/projects'
-  },
-  {
-    id: 'contact',
-    children: 'Contact',
-    icon: PhoneIcon,
-    href: '/contact'
-  }
-]
-
 export const Menu = ({ open, setOpen }: MenuProps) => {
+  const router = useRouter()
   const [query, setQuery] = useState('')
+  const MENU_ITEMS = [
+    {
+      id: 'home',
+      children: 'Home',
+      icon: HomeIcon,
+      onClick: () => router.push('/')
+    },
+    {
+      id: 'products',
+      children: 'Products',
+      icon: PencilIcon,
+      onClick: () => router.push('/products')
+    },
+    {
+      id: 'contact',
+      children: 'Contact',
+      icon: PhoneIcon,
+      onClick: () => router.push('/contact')
+    }
+  ]
   const results = query.length
     ? search(query, MENU_ITEMS, {
         keySelector: (item) => item.children
