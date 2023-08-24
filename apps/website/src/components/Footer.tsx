@@ -6,6 +6,7 @@ import {
   stack
 } from '../../styled-system/patterns'
 import NextImage from 'next/image'
+import NextLink from 'next/link'
 import { LinkedinIcon, TwitterIcon } from 'lucide-react'
 
 export const Footer = () => {
@@ -71,8 +72,8 @@ export const Footer = () => {
           </div>
           <div className={stack({ gap: 4 })}>
             <p className={box({ fontWeight: 'semibold' })}>Documents</p>
-            <a>Privacy Policy</a>
-            <a>Terms of Service</a>
+            <NextLink href="/privacy">Privacy Policy</NextLink>
+            <NextLink href="/terms">Terms of Service</NextLink>
           </div>
         </div>
       </div>
